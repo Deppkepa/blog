@@ -51,6 +51,7 @@ button:hover {
 }
 </style>
 @section('content')
+<a href="{{ route('post.index') }}" class="btn btn-primary">Главная</a> 
 <form action="{{ route('post.store') }}" method="POST">
     @csrf
     <input type="text" name="title" placeholder="Заголовок" required>

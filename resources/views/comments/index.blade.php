@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h1>Модерация комментариев</h1>
-
+	<a href="{{ route('post.index') }}" class="btn btn-primary">Главная</a> 
     @if ($comments->isEmpty())
         <p>Нет комментариев для модерации.</p>
     @else

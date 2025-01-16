@@ -47,6 +47,7 @@ h2 {
 }
 </style>
 @section('content')
+<a href="{{ route('post.index') }}" class="btn btn-primary">Главная</a> 
 <form action="{{ route('post.update', $post) }}" method="POST">
     @csrf
     @method('PUT')

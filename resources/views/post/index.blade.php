@@ -20,6 +20,12 @@
     ul {
         list-style-type: none;
         padding: 0;
+		display:flex;
+		flex-direction:column;
+		width:60%;
+		margin-left:auto;
+		margin-right:auto;
+		text-align:center;
     }
 
     li {
@@ -31,10 +37,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+		text-wrap:wrap;
     }
 
     form {
-        margin: 0;
+        margin: 5px;
     }
 
     button {
@@ -53,6 +60,8 @@
 </style>
 
 <a href="{{ route('post.create') }}" class="btn btn-primary">Создать новый пост</a> 
+<br>
+<a href="{{ route('comments.index') }}" class="btn btn-primary">Комментарии</a> 
 <ul>  
     @foreach ($posts as $post)  
         <li>  
@@ -72,7 +81,9 @@
             <ul>
                 @if ($comments)
                     @foreach ($comments as $comment)
-                        <li>{{ $comment->content }} <strong>- {{ $comment->created_at->diffForHumans() }}</strong></li>
+						@if($comment->post_id == $post->id)
+							<li >{{ $comment->content }} <strong>- {{ $comment->created_at->diffForHumans() }}</strong></li>
+						@endif
                     @endforeach
                 @endif
             </ul>
@@ -81,9 +92,9 @@
             <form action="{{ route('post.comments.create', $post->id) }}" method="POST">
                 @csrf
                 
-                <input name="author" placeholder="Добавьте свой ник" required>
+                <input id="author" name="author" placeholder="Добавьте свой ник" required>
 
-                <textarea name="content" placeholder="Добавьте свой комментарий" required></textarea>
+                <textarea id="content" name="content" placeholder="Добавьте свой комментарий" required></textarea>
                 <button type="submit">Добавить комментарий</button>
             </form>
         </li>  

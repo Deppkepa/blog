@@ -67,7 +67,6 @@ class PostController extends Controller
     {		
         $request->validate([
             'author' => 'required|string',
-            'time_start_pub' => 'required',
             'content' => 'required|string',
         ]);
 
@@ -75,7 +74,6 @@ class PostController extends Controller
             'post_id' => $numberPost,
             'author' => $request->author,
             'content' => $request->content,
-            'time_start_pub' => $request->time_start_pub,
             'flag_moder' => false
         ]);
 

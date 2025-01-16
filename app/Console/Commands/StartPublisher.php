@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Post;
 
 class StartPublisher extends Command
 {
@@ -25,11 +26,6 @@ class StartPublisher extends Command
      */
     public function handle() {
 		$posts = Post::where('is_published',false)->where('time_start_pub',"<=",str_replace(' ', 'T', now()))->where('been_published', false)->get();
-		$posts2 = Post::all();
-        foreach ($posts2 as $post) {
-            $post->title='djopa';
-            $post->save();
-        }
 		foreach ($posts as $post) {			
 			$post->is_published = true;
 			$post->time_start_pub = now();
