@@ -70,8 +70,8 @@
             <!-- Секция комментариев -->
             <h4>Комментарии:</h4>
             <ul>
-                @if ($post->comments)
-                    @foreach ($post->comments as $comment)
+                @if ($comments)
+                    @foreach ($comments as $comment)
                         <li>{{ $comment->content }} <strong>- {{ $comment->created_at->diffForHumans() }}</strong></li>
                     @endforeach
                 @endif

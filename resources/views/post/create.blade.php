@@ -54,6 +54,7 @@ button:hover {
 <form action="{{ route('post.store') }}" method="POST">
     @csrf
     <input type="text" name="title" placeholder="Заголовок" required>
+    <input type="datetime-local" name="time_start_pub" required>
     <textarea name="content" placeholder="Содержание" required></textarea>
     <button type="submit">Создать пост</button>
 </form>

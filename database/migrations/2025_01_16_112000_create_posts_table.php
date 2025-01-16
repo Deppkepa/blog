@@ -16,6 +16,8 @@ return new class extends Migration
         $table->string('title');
         $table->text('content');
         $table->boolean('is_published')->default(false);
+        $table->timestamp('time_start_pub');
+        $table->boolean('been_published')->default(false);
         $table->timestamps();
     });
 }

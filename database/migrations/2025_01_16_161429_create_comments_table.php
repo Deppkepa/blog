@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
 			$table->id();
-            $table->foreignId('postid')->constrained()->onDelete('cascade');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
 			$table->string('author');
 			$table->text('content');
 			$table->boolean('flag_moder')->default(false);

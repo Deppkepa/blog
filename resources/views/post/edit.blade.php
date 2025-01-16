@@ -51,6 +51,7 @@ h2 {
     @csrf
     @method('PUT')
     <input type="text" name="title" value="{{ $post->title }}" required>
+    <input type="datetime-local" name="time_start_pub" required>
     <textarea name="content" required>{{ $post->content }}</textarea>
     <button type="submit">Сохранить изменения</button>
 </form>

@@ -27,7 +27,7 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        Post::create($request->only(['title', 'content']));
+        Post::create($request->only(['title', 'content', 'time_start_pub']));
         return redirect()->route('post.index');
     }
 
@@ -41,9 +41,12 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'time_start_pub' => 'required'
         ]);
 
         $post->update($request->all());
+        $post->been_published = false;
+        $post->save();
         return redirect()->route('post.index');
     }
 
@@ -64,13 +67,15 @@ class PostController extends Controller
     {		
         $request->validate([
             'author' => 'required|string',
+            'time_start_pub' => 'required',
             'content' => 'required|string',
         ]);
 
         Comment::create([
-            'postid' => $numberPost,
+            'post_id' => $numberPost,
             'author' => $request->author,
             'content' => $request->content,
+            'time_start_pub' => $request->time_start_pub,
             'flag_moder' => false
         ]);
 

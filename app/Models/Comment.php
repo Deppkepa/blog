@@ -9,10 +9,10 @@ use App\Models\Post;
 class Comment extends Model
 {   
     use hasFactory;
-    protected $fillable = ['postid', 'author', 'content', 'flag_moder'];
+    protected $fillable = ['post_id', 'author', 'content', 'flag_moder'];
     public function post()
 	{
-		return $this->belongsTo(Post::class, 'postid');
+		return $this->belongsTo(Post::class, 'post_id');
 	}
 
 }
